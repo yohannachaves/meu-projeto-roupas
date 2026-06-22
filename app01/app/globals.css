@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  /* Cores para o Modo Claro (Sofisticado) */
+  --background: #fcfcf9; /* Um off-white/gelo bem elegante, comum em sites de grife */
+  --foreground: #1a1a1a; /* Um preto suave/grafite para os textos não ficarem totalmente secos */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Cores para o Modo Escuro (Moderno) */
+    --background: #121212; /* Cinza escuro premium, em vez daquele pretão total de fábrica */
+    --foreground: #f5f5f5; /* Texto claro suave */
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte clássica do mundo da moda */
+  transition: background 0.3s ease, color 0.3s ease; /* Transição suave se o sistema mudar de cor */
+}
+
+/* Um toque extra para deixar os links do menu bonitos */
+nav a {
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
