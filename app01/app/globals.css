@@ -1,39 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  /* Cores para o Modo Claro (Sofisticado) */
-  --background: #fcfcf9; /* Um off-white/gelo bem elegante, comum em sites de grife */
-  --foreground: #1a1a1a; /* Um preto suave/grafite para os textos não ficarem totalmente secos */
+  /* Cores Fofas e Elegantes */
+  --background: #fff0f3;    /* Um rosa pastel bem fofo e delicado para o fundo */
+  --foreground: #2d2224;    /* Marrom-café escuro para os textos (combina perfeitamente com rosa) */
+  --muted: #a68a8e;         /* Rosa antigo para subtextos */
+  --accent: #f3d1dc;        /* Rosa chiclete claro para detalhes */
+  --accent-hover: #e8b4c5;  /* Rosa do efeito hover */
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Cores para o Modo Escuro (Moderno) */
-    --background: #121212; /* Cinza escuro premium, em vez daquele pretão total de fábrica */
-    --foreground: #f5f5f5; /* Texto claro suave */
-  }
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte clássica do mundo da moda */
-  transition: background 0.3s ease, color 0.3s ease; /* Transição suave se o sistema mudar de cor */
+  font-family: 'Playfair Display', 'Georgia', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
-/* Um toque extra para deixar os links do menu bonitos */
+/* Títulos GRANDES e em NEGRITO */
+h1 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 900;       /* Super negrito */
+  font-size: 3.5rem;      /* Dedicado a títulos grandes */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+/* Subtítulo descritivo */
+p {
+  font-family: system-ui, sans-serif;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* Menu de Navegação Fofo */
+nav {
+  padding: 2rem 0;
+}
+
 nav a {
-  transition: all 0.2s ease-in-out;
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;          /* Links em negrito */
+  text-transform: lowercase; /* Tudo em minúsculo para ser mais meigo */
+  margin-right: 1.5rem;
+  text-decoration: none;
+  color: var(--foreground);
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-  opacity: 0.7;
-  transform: translateY(-1px);
+  color: var(--muted);
+}
+
+/* Linha rosa que surge embaixo do link no hover */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-hover);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Ajuste para a imagem não ficar com aquele bloco branco feio no fundo rosa */
+img {
+  mix-blend-mode: multiply;
+  max-width: 100%;
+  height: auto;
 }
